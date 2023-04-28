@@ -1,13 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package practice.projects.libraryproject;
 
-/**
- *
- * @author mdzhs
- */
 public class Book {
-    //hello hanna
+    private int id;
+    private String Title;
+    private String Author;
+
+    public Book(int id, String title, String author) {
+        this.id = id;
+        Title = title;
+        Author = author;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public String getAuthor() {
+        return Author;
+    }
 }
