@@ -16,7 +16,7 @@ import java.util.*;
 
 
 public class Library {
-
+//sds
     ArrayList<Book> booksList = new ArrayList();
     ArrayList<Person> membersList = new ArrayList();
     ArrayList<Person> bookOrderList = new ArrayList();
@@ -49,24 +49,14 @@ public class Library {
         membersList.remove(person);
     }
 
-    public ArrayList<Book> searchBooks(String searchItemString)
+    public ArrayList<Book> searchBooks(Object searchItem)
     {
         ArrayList<Book> resultList = new ArrayList();
         for(Book searchVector:booksList) {
-            Integer searchItemInt;
-            try
-            {
-                searchItemInt = Integer.parseInt(searchItemString);
-            } catch (NumberFormatException e)
-            {
-                System.out.println(searchItemString + " is not an ID");
-                searchItemInt = 0;
-            }
-            // Integer searchItemInt= Integer.valueOf(searchItem);
 
-            if (searchVector.getTitle().contains(searchItemString) ||
-                    Integer.valueOf(searchVector.getId()).equals(searchItemInt) ||
-                    searchVector.getAuthor().contains(searchItemString)
+            if (searchVector.getTitle().contains((String)searchItem) ||
+                    Integer.valueOf(searchVector.getId()).equals((Integer)searchItem) ||
+                    searchVector.getAuthor().contains((String)searchItem)
             ) {
                     resultList.add(searchVector);
             }
@@ -74,7 +64,7 @@ public class Library {
         }
         if(resultList.size()==0)
         {
-            System.out.println(searchItemString+" Not found");
+            System.out.println(searchItem+" Not found");
         }
         else{
             System.out.println(resultList);
