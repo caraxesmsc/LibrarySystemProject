@@ -54,6 +54,19 @@ public class Library {
         ArrayList<Book> resultList = new ArrayList();
         for(Book searchVector:booksList) {
 
+            Integer searchItemInt;
+
+            try
+            {
+                searchItemInt = Integer.parseInt(searchItemString);
+            } catch (NumberFormatException e)
+            {
+                System.out.println(searchItemString + " is not an ID");
+                searchItemInt = 0;
+            }
+            // Integer searchItemInt= Integer.valueOf(searchItem);
+
+
             if (searchVector.getTitle().contains((String)searchItem) ||
                     Integer.valueOf(searchVector.getId()).equals((Integer)searchItem) ||
                     searchVector.getAuthor().contains((String)searchItem)
