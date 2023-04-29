@@ -54,6 +54,7 @@ public class Library {
         ArrayList<Book> resultList = new ArrayList();
         for(Book searchVector:booksList) {
             Integer searchItemInt;
+
             try
             {
                 searchItemInt = Integer.parseInt(searchItemString);
