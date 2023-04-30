@@ -21,6 +21,7 @@ public class Library {
     ArrayList<Person> bookOrderList = new ArrayList<>();
     ArrayList<Person> myBookOrderList = new ArrayList<>();
 
+
     public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Person> bookOrderList, ArrayList<Person> myBookOrderList) {
         Library.booksList = booksList;
         this.membersList = membersList;
@@ -49,11 +50,15 @@ public class Library {
     }
 
 
+
      static ArrayList<Book> searchBooks(String searchItemString)
+
     {
         ArrayList<Book> resultList = new ArrayList<>();
         for(Book searchVector:booksList) {
+
             Integer searchItemInt;
+
             try
             {
                 searchItemInt = Integer.parseInt(searchItemString);
@@ -64,9 +69,10 @@ public class Library {
             }
             // Integer searchItemInt= Integer.valueOf(searchItem);
 
-            if (searchVector.getTitle().contains(searchItemString) ||
-                    Integer.valueOf(searchVector.getId()).equals(searchItemInt) ||
-                    searchVector.getAuthor().contains(searchItemString)
+
+            if (searchVector.getTitle().contains((String)searchItem) ||
+                    Integer.valueOf(searchVector.getId()).equals((Integer)searchItem) ||
+                    searchVector.getAuthor().contains((String)searchItem)
             ) {
                 Book matchedBook = new Book(searchVector.getId(), searchVector.getTitle(), searchVector.getAuthor());
                 resultList.add(matchedBook);
@@ -75,7 +81,7 @@ public class Library {
         }
         if(resultList.size()==0)
         {
-            System.out.println(searchItemString+" Not found");
+            System.out.println(searchItem+" Not found");
         }
         else{
             System.out.println(resultList);
