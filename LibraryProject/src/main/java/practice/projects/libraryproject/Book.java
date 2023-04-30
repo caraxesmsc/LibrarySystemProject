@@ -22,4 +22,13 @@ public class Book {
     public String getAuthor() {
         return Author;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + Title + '\'' +
+                ", author='" + Author + '\'' +
+                '}';
+    }
 }

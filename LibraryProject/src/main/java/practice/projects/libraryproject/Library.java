@@ -1,10 +1,9 @@
 
 package practice.projects.libraryproject;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.*;
+
 //Array List
-//default capacity is 10, you can write the number desired between prenthesis after the constructor (100)
+//default capacity is 10, you can write the number desired between parenthesis after the constructor (100)
 //.add("") adds the value given to the end of the arraylist
 //.add(1,"") adds the value given in the index given (overloaded method)
 //.set(1,"") sets the value given at the index given
@@ -16,21 +15,22 @@ import java.util.*;
 
 
 public class Library {
-//sds
-    ArrayList<Book> booksList = new ArrayList();
-    ArrayList<Person> membersList = new ArrayList();
-    ArrayList<Person> bookOrderList = new ArrayList();
-    ArrayList<Person> mybookOrderList = new ArrayList();
 
-    public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Person> bookOrderList, ArrayList<Person> mybookOrderList) {
-        this.booksList = booksList;
+    static ArrayList<Book> booksList = new ArrayList<>();
+    ArrayList<Person> membersList = new ArrayList<>();
+    ArrayList<Person> bookOrderList = new ArrayList<>();
+    ArrayList<Person> myBookOrderList = new ArrayList<>();
+
+
+    public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Person> bookOrderList, ArrayList<Person> myBookOrderList) {
+        Library.booksList = booksList;
         this.membersList = membersList;
         this.bookOrderList = bookOrderList;
-        this.mybookOrderList = mybookOrderList;
+        this.myBookOrderList = myBookOrderList;
     }
 
     public Library(ArrayList<Book> booksList) {
-        this.booksList = booksList;
+        Library.booksList = booksList;
     }
 
     void addBook(Book book){
@@ -49,9 +49,12 @@ public class Library {
         membersList.remove(person);
     }
 
-    public ArrayList<Book> searchBooks(Object searchItem)
+
+
+     static ArrayList<Book> searchBooks(String searchItemString)
+
     {
-        ArrayList<Book> resultList = new ArrayList();
+        ArrayList<Book> resultList = new ArrayList<>();
         for(Book searchVector:booksList) {
 
             Integer searchItemInt;
@@ -71,7 +74,8 @@ public class Library {
                     Integer.valueOf(searchVector.getId()).equals((Integer)searchItem) ||
                     searchVector.getAuthor().contains((String)searchItem)
             ) {
-                    resultList.add(searchVector);
+                Book matchedBook = new Book(searchVector.getId(), searchVector.getTitle(), searchVector.getAuthor());
+                resultList.add(matchedBook);
             }
 
         }
