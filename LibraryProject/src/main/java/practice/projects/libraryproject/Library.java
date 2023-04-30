@@ -1,7 +1,6 @@
 
 package practice.projects.libraryproject;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 //Array List
 //default capacity is 10, you can write the number desired between parenthesis after the constructor (100)
@@ -50,13 +49,8 @@ public class Library {
     }
 
 
-     static ArrayList<Book> searchBooks()
+     static ArrayList<Book> searchBooks(String searchItemString)
     {
-
-        System.out.println("Please enter details to search for a book");
-        Scanner cin = new Scanner(System.in);
-        String searchItemString = cin.nextLine();
-
         ArrayList<Book> resultList = new ArrayList<>();
         for(Book searchVector:booksList) {
             Integer searchItemInt;
@@ -65,7 +59,7 @@ public class Library {
                 searchItemInt = Integer.parseInt(searchItemString);
             } catch (NumberFormatException e)
             {
-                //System.out.println(searchItemString + " is not an ID");
+                System.out.println(searchItemString + " is not an ID");
                 searchItemInt = 0;
             }
             // Integer searchItemInt= Integer.valueOf(searchItem);
@@ -84,7 +78,6 @@ public class Library {
             System.out.println(searchItemString+" Not found");
         }
         else{
-            System.out.println("Found "+resultList.size()+" matching results:");
             System.out.println(resultList);
         }
         return resultList;
