@@ -17,10 +17,10 @@ import java.util.*;
 
 public class Library {
 //sds
-    ArrayList<Book> booksList = new ArrayList();
-    ArrayList<Person> membersList = new ArrayList();
-    ArrayList<Person> bookOrderList = new ArrayList();
-    ArrayList<Person> mybookOrderList = new ArrayList();
+    static ArrayList<Book> booksList = new ArrayList();
+    static ArrayList<Person> membersList = new ArrayList();
+    static ArrayList<Person> bookOrderList = new ArrayList();
+    static ArrayList<Person> mybookOrderList = new ArrayList();
 
     public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Person> bookOrderList, ArrayList<Person> mybookOrderList) {
         this.booksList = booksList;
@@ -49,29 +49,45 @@ public class Library {
         membersList.remove(person);
     }
 
-    public ArrayList<Book> searchBooks(Object searchItem)
+    static public Book searchBooks(String name )
     {
-        ArrayList<Book> resultList = new ArrayList();
-        for(Book searchVector:booksList) {
 
-            if (searchVector.getTitle().contains((String)searchItem) ||
-                    Integer.valueOf(searchVector.getId()).equals((Integer)searchItem) ||
-                    searchVector.getAuthor().contains((String)searchItem)
-            ) {
-                    resultList.add(searchVector);
-            }
-
-        }
-        if(resultList.size()==0)
+        for(int i=0;i<booksList.size();i++)
         {
-            System.out.println(searchItem+" Not found");
+            if(booksList.get(i).getTitle().equals(name))
+            {
+                System.out.println("The book "+ booksList.get(i).getTitle()+"is found");
+                return booksList.get(i);
+
+            }
         }
-        else{
-            System.out.println(resultList);
-        }
-        return resultList;
+        System.out.println("the book you are searching for is not found");
+        return null;
     }
+    static public int searchMember(String name )
+    {
 
-
-
+        for(int i=0;i<membersList.size();i++)
+        {
+            if(membersList.get(i).getFirstName().equals(name))
+            {
+                System.out.println(membersList.get(i).getFirstName() +" is found");
+                return i;
+            }
+        }
+        System.out.println("the person you are searching for is not found");
+        return -1;
+    }
+//    static public addUserToBookOrderList(Person user,String title )
+//    {
+//        Book book = searchBooks(title);
+//        if (book != null) {
+//            if (book.getsta)
+//            ArrayList<Person> userWaitingList=new ArrayList();
+//            userWaitingList.add(user);
+//        }
+//    }
 }
+
+
+

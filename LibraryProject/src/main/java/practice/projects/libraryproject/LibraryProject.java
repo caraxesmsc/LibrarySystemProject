@@ -17,9 +17,9 @@ public class LibraryProject {
 
         lib1.addBook(b1);
         lib1.addBook(b2);
-        lib1.searchBooks("Mahmoud");
-        System.out.println(lib1.booksList);
-        System.out.println("hhh");
+//        Library.searchBooks("Mahmoud");
+        System.out.println(Library.searchBooks("Java for begginers"));
+
     }
     
     
