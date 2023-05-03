@@ -109,14 +109,13 @@ public class Library {
         Book booktoreturn = searchmyorderlist(user,title);
         if (booktoreturn!=null)) {
             user.removeOrderedBook(booktoreturn);
-            booktoreturn.isRented(false);
+            booktoreturn.isRented();
             booktoreturn.returnDate(null);
             Library.addAvailableBook(booktoreturn);
 
 
         }
     }
-
 }
 
 
