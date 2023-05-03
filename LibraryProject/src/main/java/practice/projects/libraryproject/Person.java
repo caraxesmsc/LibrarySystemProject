@@ -1,6 +1,8 @@
 
 package practice.projects.libraryproject;
 
+import java.util.ArrayList;
+
 public class Person {
 //ID: integer Done
 //Password: Integer DOne    
@@ -25,7 +27,7 @@ public class Person {
     String email;
     boolean isBlocked;
     //Book myOrderList;
-
+    ArrayList<Book> mybookOrderList = new ArrayList();
     public Person(int id, int password, String type, String firstName, String lastName, String address, int cellPhone, String email, boolean isBlocked) {
         this.id = id;
         this.password = password;
@@ -41,6 +43,10 @@ public class Person {
 
     public Person(String firstName) {
         this.firstName = firstName;
+    }
+
+    public Person() {
+
     }
 
     public int getId() {

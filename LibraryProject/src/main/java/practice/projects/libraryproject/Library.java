@@ -1,5 +1,6 @@
 
 package practice.projects.libraryproject;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.*;
@@ -19,14 +20,14 @@ public class Library {
 //sds
     static ArrayList<Book> booksList = new ArrayList();
     static ArrayList<Person> membersList = new ArrayList();
-    static ArrayList<Person> bookOrderList = new ArrayList();
-    static ArrayList<Person> mybookOrderList = new ArrayList();
+    static ArrayList<Order> bookOrderList = new ArrayList();
 
-    public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Person> bookOrderList, ArrayList<Person> mybookOrderList) {
+
+    public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Order> bookOrderList) {
         this.booksList = booksList;
         this.membersList = membersList;
-        this.bookOrderList = bookOrderList;
-        this.mybookOrderList = mybookOrderList;
+        this.bookOrderList = bookOrderList; //admin view of all orders
+
     }
 
     public Library(ArrayList<Book> booksList) {
@@ -49,7 +50,7 @@ public class Library {
         membersList.remove(person);
     }
 
-    static public Book searchBooks(String name )
+    static public Book searchBooks(String name)
     {
 
         for(int i=0;i<booksList.size();i++)
@@ -78,15 +79,17 @@ public class Library {
         System.out.println("the person you are searching for is not found");
         return -1;
     }
-//    static public addUserToBookOrderList(Person user,String title )
-//    {
-//        Book book = searchBooks(title);
-//        if (book != null) {
-//            if (book.getsta)
-//            ArrayList<Person> userWaitingList=new ArrayList();
-//            userWaitingList.add(user);
-//        }
-//    }
+   static public void addUserToBookOrderList(Person user,String title )
+   {
+       Book b1 = searchBooks(title);
+       LocalDateTime now = LocalDateTime.now();
+       if (b1 != null) {
+           user.mybookOrderList.add(b1);
+           Order o1 = new Order(user,b1,now);
+           bookOrderList.add(o1);
+           System.out.println("Order made Successfully Order no."+Order.getCounter());
+        }
+   }
 }
 
 
