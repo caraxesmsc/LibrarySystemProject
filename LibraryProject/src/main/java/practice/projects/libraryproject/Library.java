@@ -90,6 +90,33 @@ public class Library {
            System.out.println("Order made Successfully Order no."+Order.getCounter());
         }
    }
+    public static Book searchmyorderlist(Person user,String title)
+    {
+        for(int i=0;i<user.mybookOrderList.size();i++)
+        {
+            if(user.mybookOrderList.get(i).getTitle().equals(title))
+            {
+                return user.mybookOrderList.get(i);
+            }
+        }
+        return null;
+    }
+    public static void addAvailableBook(Book b1)
+    {
+        booksList.add(b1);
+    }
+    public static void returnBook(Person user, String title) {
+        Book booktoreturn = searchmyorderlist(user,title);
+        if (booktoreturn!=null)) {
+            user.removeOrderedBook(booktoreturn);
+            booktoreturn.isRented(false);
+            booktoreturn.returnDate(null);
+            Library.addAvailableBook(booktoreturn);
+
+
+        }
+    }
+
 }
 
 
