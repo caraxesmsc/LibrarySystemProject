@@ -1,9 +1,10 @@
 
 package practice.projects.libraryproject;
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.*;
 //Array List
-//default capacity is 10, you can write the number desired between parenthesis after the constructor (100)
+//default capacity is 10, you can write the number desired between prenthesis after the constructor (100)
 //.add("") adds the value given to the end of the arraylist
 //.add(1,"") adds the value given in the index given (overloaded method)
 //.set(1,"") sets the value given at the index given
@@ -15,22 +16,21 @@ import java.util.ArrayList;
 
 
 public class Library {
+//sds
+    static ArrayList<Book> booksList = new ArrayList();
+    static ArrayList<Person> membersList = new ArrayList();
+    static ArrayList<Person> bookOrderList = new ArrayList();
+    static ArrayList<Person> mybookOrderList = new ArrayList();
 
-    static ArrayList<Book> booksList = new ArrayList<>();
-    ArrayList<Person> membersList = new ArrayList<>();
-    ArrayList<Person> bookOrderList = new ArrayList<>();
-    ArrayList<Person> myBookOrderList = new ArrayList<>();
-
-
-    public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Person> bookOrderList, ArrayList<Person> myBookOrderList) {
-        Library.booksList = booksList;
+    public Library(ArrayList<Book> booksList, ArrayList<Person> membersList, ArrayList<Person> bookOrderList, ArrayList<Person> mybookOrderList) {
+        this.booksList = booksList;
         this.membersList = membersList;
         this.bookOrderList = bookOrderList;
-        this.myBookOrderList = myBookOrderList;
+        this.mybookOrderList = mybookOrderList;
     }
 
     public Library(ArrayList<Book> booksList) {
-        Library.booksList = booksList;
+        this.booksList = booksList;
     }
 
     void addBook(Book book){
@@ -49,46 +49,45 @@ public class Library {
         membersList.remove(person);
     }
 
-
-
-     static ArrayList<Book> searchBooks(String searchItemString)
-
+    static public Book searchBooks(String name )
     {
-        ArrayList<Book> resultList = new ArrayList<>();
-        for(Book searchVector:booksList) {
 
-            Integer searchItemInt;
-
-            try
-            {
-                searchItemInt = Integer.parseInt(searchItemString);
-            } catch (NumberFormatException e)
-            {
-                System.out.println(searchItemString + " is not an ID");
-                searchItemInt = 0;
-            }
-            // Integer searchItemInt= Integer.valueOf(searchItem);
-
-
-            if (searchVector.getTitle().contains((String)searchItem) ||
-                    Integer.valueOf(searchVector.getId()).equals((Integer)searchItem) ||
-                    searchVector.getAuthor().contains((String)searchItem)
-            ) {
-                Book matchedBook = new Book(searchVector.getId(), searchVector.getTitle(), searchVector.getAuthor());
-                resultList.add(matchedBook);
-            }
-
-        }
-        if(resultList.size()==0)
+        for(int i=0;i<booksList.size();i++)
         {
-            System.out.println(searchItem+" Not found");
+            if(booksList.get(i).getTitle().equals(name))
+            {
+                System.out.println("The book "+ booksList.get(i).getTitle()+"is found");
+                return booksList.get(i);
+
+            }
         }
-        else{
-            System.out.println(resultList);
-        }
-        return resultList;
+        System.out.println("the book you are searching for is not found");
+        return null;
     }
+    static public int searchMember(String name )
+    {
 
-
-
+        for(int i=0;i<membersList.size();i++)
+        {
+            if(membersList.get(i).getFirstName().equals(name))
+            {
+                System.out.println(membersList.get(i).getFirstName() +" is found");
+                return i;
+            }
+        }
+        System.out.println("the person you are searching for is not found");
+        return -1;
+    }
+//    static public addUserToBookOrderList(Person user,String title )
+//    {
+//        Book book = searchBooks(title);
+//        if (book != null) {
+//            if (book.getsta)
+//            ArrayList<Person> userWaitingList=new ArrayList();
+//            userWaitingList.add(user);
+//        }
+//    }
 }
+
+
+

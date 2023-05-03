@@ -39,6 +39,10 @@ public class Person {
         //this.myOrderList = myOrderList;
     }
 
+    public Person(String firstName) {
+        this.firstName = firstName;
+    }
+
     public int getId() {
         System.out.println("The ID is: "+id);
         return id;
